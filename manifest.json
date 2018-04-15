@@ -1,0 +1,28 @@
+{
+  "description": "Demonstrating webRequests",
+  "manifest_version": 2,
+  "name": "malblock",
+  "version": "1.0",
+
+  "icons": {
+    "96": "icons/logo.svg"
+  },
+  "permissions": [
+      "notifications",
+      "webRequest",
+      "webRequestBlocking",
+      "<all_urls>",
+      "storage"
+  ],
+
+  "background": {
+    "scripts": ["scripts/malblock.js"]
+  },
+
+  "browser_action": {
+    "default_icon": "icons/logo.svg",
+    "default_title": "MalBlock",
+    "default_popup": "popup/popup.html"
+  }
+
+}
