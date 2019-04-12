@@ -32,6 +32,12 @@ h4 {
   color: rgb(179, 179, 179);
 }
 
+p {
+  margin-top: 4px;
+  font-size: 13px;
+  color: rgb(26, 25, 25);
+}
+
 .wrap {
   margin-top: 32px;
 }

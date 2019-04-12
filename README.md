@@ -4,9 +4,7 @@ Malblock is a JavaScript web extension made to run in Firefox. This project was 
 
 ## Setup
 
-1. Clone this repo using 
-2. Head to Firefox and type `about:debugging` in the url bar
+1. Clone this repo using `git clone https://github.com/jaredmacintyre/MalBlock.git`
+2. Open Firefox andType `about:debugging` in the Firefox URL bar
 3. Enable add-on debugging
-4. Select "Load Temporary Add-on..." and open project directory
-
-
+4. Select "Load Temporary Add-on..." and open the cloned directory
