@@ -1,5 +1,3 @@
-<div align="center">A Firefox web extension that protects users from accessing known malicious domains</div>
-
 ## MalBlock
 
 Malblock is a JavaScript web extension made to run in Firefox. This project was a proof-of-concept to create a web extension that is capable of protecting the user from accessing malicious websites, based on a list of known malicious domains.
