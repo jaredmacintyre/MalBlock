@@ -1,7 +1,4 @@
-// var pattern = ["https://imgur.com/*", "https://reddit.com*"];
-// var pattern = "https://developer.mozilla.org/*";
-
-var pattern = "*://imgur.com/*";
+var pattern = [];
 var powerOn = true;
 
 var portFromCS;
@@ -19,18 +16,14 @@ function connected(p) {
 
 browser.runtime.onConnect.addListener(connected);
 
+var request = new XMLHttpRequest();
+request.open('GET', "../scripts/badSites.json", false);  // `false` makes the request synchronous
+request.send(null);
 
-
-
-
-// var pat = JSON.parse("list.json");
-// console.log(pat);
-// var pattern = [
-//     "https://developer.mozilla.org/*",
-//     "https://imgur.com/*",
-//     "*.net/*"];
-
-
+if (request.status === 200) {
+  pattern = JSON.parse(request.responseText).sites;
+  console.log(request.responseText);
+}
 
 // cancel function returns an object
 // which contains a property `cancel` set to `true`
@@ -42,7 +35,7 @@ function cancel(requestDetails) {
       "type": "basic",
       "iconUrl": browser.extension.getURL("icons/logo.svg"),
       "title": "Malicious URL Detected",
-      "message": "MalBlock has blocked access to " + requestDetails.url + " because we detect malicious activity."
+      "message": "MalBlock has blocked access to " + requestDetails.url + " because we've detected malicious activity."
     });
 
     return {cancel: true};
@@ -51,8 +44,9 @@ function cancel(requestDetails) {
   }
 }
 
+console.log(pattern);
 browser.webRequest.onBeforeRequest.addListener(
   cancel,
-  {urls:[pattern]},
+  {urls:pattern},
   ["blocking"]
 );

@@ -24,12 +24,19 @@ function updateSwitch(item) {
 }
 
 function saveOptions(e) {
+    var powerVal = document.querySelector("#switch").checked;
     // console.log(document.querySelector("#switch").checked);
     //set local setting for the checked box "checked" state
     browser.storage.local.set({
-        'power': document.querySelector("#switch").checked
+        'power': powerVal
     }).then(setItem, onError);
-    myPort.postMessage({power: document.querySelector("#switch").checked});
+    myPort.postMessage({power: powerVal});
+    if (powerVal) {
+        browser.browserAction.setIcon({path: "../icons/logo.svg"});
+    }
+    else {
+        browser.browserAction.setIcon({path: "../icons/logo2.svg"});
+    }
 }
 
 //allows connection b/n this script and background script
